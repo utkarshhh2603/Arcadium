@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Turf Booking</title>
+    <link rel="stylesheet" href="slot.css">
+    <!-- Adding a futuristic font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Arcadium</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Activities</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <button onclick="openLoginModal()">Login/Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Football Turf Booking Section -->
+    <section class="booking-form">
+        <h2>Book Your Football Turf Slot</h2>
+        <form id="bookingForm">
+            <!-- Select City -->
+            <label for="city">Select City:</label>
+            <select id="city" name="city" required>
+                <option value="" disabled selected>Select City</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+            </select>
+
+            <!-- Select Place -->
+            <label for="place">Select Place:</label>
+            <select id="place" name="place" required>
+                <option value="" disabled selected>Select Place</option>
+                <option value="Arcadium A">Arcadium A</option>
+                <option value="Arcadium B">Arcadium B</option>
+                <option value="Arcadium C">Arcadium C</option>
+            </select>
+
+            <!-- Select Date -->
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <!-- Select Slot -->
+            <label for="slot">Select Slot:</label>
+            <select id="slot" name="slot" required>
+                <option value="" disabled selected>Select Slot</option>
+                <option value="6AM-7AM">6AM - 7AM</option>
+                <option value="7AM-8AM">7AM - 8AM</option>
+                <option value="8AM-9AM">8AM - 9AM</option>
+                <option value="5PM-6PM">5PM - 6PM</option>
+                <option value="6PM-7PM">6PM - 7PM</option>
+            </select>
+
+            <!-- How many members are you? -->
+            <label for="members">How many members are you?</label>
+            <input type="number" id="members" name="members" min="1" max="10" required>
+
+            <!-- Check Availability -->
+            <button type="button" id="checkAvailabilityBtn" onclick="checkAvailability()">Check Availability</button>
+
+            <!-- Display Availability -->
+            <div id="availability">
+                <p id="playersLeft">Players left: 10</p>
+            </div>
+
+            <!-- Book Slot Button -->
+            <button type="button" id="bookSlotBtn" onclick="bookSlot()"><a href="http://127.0.0.1:5500/payment.html">Book Slot</a></button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Arcadium Sports Complex | Future of Sports</p>
+    </footer>
+
+    <!-- JavaScript to handle availability and booking -->
+    <script>
+        function checkAvailability() {
+            const members = parseInt(document.getElementById('members').value);
+            const maxPlayers = 10;
+            const playersLeft = maxPlayers - members;
+
+            if (playersLeft < 0) {
+                document.getElementById('playersLeft').innerText = `You have too many members! Max allowed: 10`;
+            } else {
+                document.getElementById('playersLeft').innerText = `Players left: ${playersLeft}`;
+            }
+        }
+
+        function bookSlot() {
+            const members = parseInt(document.getElementById('members').value);
+            const playersLeft = 10 - members;
+
+            if (members > 10) {
+                alert('You have too many members! Max allowed is 10.');
+            } else if (members <= 0) {
+                alert('Please enter a valid number of members.');
+            } else {
+                document.getElementById('confirmationMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

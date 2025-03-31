@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+}
+
+/* Header */
+header {
+    background-color: #141414;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin-left: 20px;
+    color: #00ffcc;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.auth-buttons button {
+    margin-right: 20px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    cursor: pointer;
+    color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Payment Form */
+.payment-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.payment-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    color: #00ffcc;
+    margin-bottom: 40px;
+}
+
+.payment-container {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+}
+
+.payment-container label {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.payment-container select, 
+.payment-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+#payNowBtn {
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#confirmationMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #00ffcc;
+}
+
+/* QR Code */
+#qrCodePayment img {
+    width: 200px;
+    margin: 15px auto;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #141414;
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

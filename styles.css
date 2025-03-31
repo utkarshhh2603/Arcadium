@@ -1,0 +1,216 @@
+/* General CSS reset and styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+}
+
+/* Header Section */
+header {
+    background-color: #141414;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin-left: 20px;
+    color: #00ffcc;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect for the navigation links */
+.nav-links ul li a:hover {
+    color: #00ffcc;
+    background-color: rgba(0, 255, 204, 0.2);
+    border-radius: 5px;
+}
+
+/* Auth buttons styling */
+.auth-buttons button {
+    margin-right: 20px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    cursor: pointer;
+    color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: #ffffff;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+}
+
+/* Hero section */
+.hero {
+    background-color: #121212;
+    color: #00ffcc;
+    padding: 150px 0 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+/* Shapes in the hero section */
+.hero-shapes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    background-color: rgba(0, 255, 204, 0.2);
+    border: 2px solid #00ffcc;
+    animation: rotate 10s linear infinite;
+}
+
+.shape-left.shape-1 { width: 100px; height: 100px; top: 50px; left: -50px; }
+.shape-left.shape-2 { width: 150px; height: 150px; top: 300px; left: -75px; }
+.shape-left.shape-3 { width: 50px; height: 50px; top: 500px; left: 20px; }
+
+.shape-right.shape-4 { width: 120px; height: 120px; top: 200px; right: -60px; }
+.shape-right.shape-5 { width: 80px; height: 80px; bottom: 100px; right: -40px; }
+.shape-right.shape-6 { width: 50px; height: 50px; top: 450px; right: 40px; }
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Booking Section */
+.booking {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+/* Activity grid layout */
+.activity-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.activity-card {
+    background-color: #1a1a1a;
+    width: 30%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.activity-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.activity-card h4 {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.activity-card button {
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: scale(1.05);
+    background-color: #222222;
+}
+
+/* Updated hover effect for image and "Book Now" button */
+.activity-card img {
+    filter: none;
+    opacity: 1;
+}
+
+.activity-card::before {
+    content: 'Book Now';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold; /* Make text bold */
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 5px;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.activity-card:hover img {
+    transform: scale(1.1);
+    filter: blur(4px);
+    opacity: 0.6;
+}
+
+.activity-card:hover::before {
+    opacity: 1; /* Fully opaque */
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1.1);
+    font-weight: bold; /* Ensure the "Book Now" option is bold */
+}

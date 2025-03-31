@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment for Football Turf Booking</title>
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="payment.css">
+    <!-- Adding the futuristic font for consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Arcadium</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Activities</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <button onclick="openLoginModal()">Login/Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="payment-container">
+            <h2>Complete Your Payment</h2>
+            <form id="paymentForm">
+                <label for="paymentMethod">Choose Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="UPI">UPI</option>
+                    <option value="DebitCard">Credit Card/Debit Card</option>
+                    <option value="NetBanking">Net Banking</option>
+                </select>
+
+                <!-- UPI Input -->
+                <div id="upiInput" class="payment-option">
+                    <label for="upiId">Enter UPI ID:</label>
+                    <input type="text" id="upiId" name="upiId" placeholder="example@bank" required>
+                </div>
+
+                <!-- Debit Card Input -->
+                <div id="debitCardInput" class="payment-option">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="month" id="expiryDate" name="expiryDate" required>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+                </div>
+
+                <!-- Net Banking Input -->
+                <div id="netBankingInput" class="payment-option">
+                    <label for="bankName">Select Bank:</label>
+                    <select id="bankName" name="bankName" required>
+                        <option value="" disabled selected>Select Bank</option>
+                        <option value="SBI">State Bank of India</option>
+                        <option value="ICICI">ICICI Bank</option>
+                        <option value="HDFC">HDFC Bank</option>
+                        <option value="Axis">Axis Bank</option>
+                    </select>
+                </div>
+
+                <!-- Submit Payment Button -->
+                <button type="button" id="payNowBtn" onclick="confirmPayment()">Pay Now</button>
+
+                <!-- Confirmation Message -->
+                <div id="confirmationMessage" style="display: none;">
+                    <p>Payment successful! Your slot is booked.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Arcadium Sports Complex | Future of Sports</p>
+    </footer>
+
+    <!-- JavaScript for Payment Method Selection -->
+    <script>
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            const selectedMethod = this.value;
+            document.querySelectorAll('.payment-option').forEach(function(option) {
+                option.style.display = 'none';
+            });
+
+            if (selectedMethod === 'UPI') {
+                document.getElementById('upiInput').style.display = 'block';
+            } else if (selectedMethod === 'DebitCard') {
+                document.getElementById('debitCardInput').style.display = 'block';
+            } else if (selectedMethod === 'NetBanking') {
+                document.getElementById('netBankingInput').style.display = 'block';
+            } else if (selectedMethod === 'QRCode') {
+                document.getElementById('qrCodePayment').style.display = 'block';
+            }
+        });
+
+        function confirmPayment() {
+            const selectedMethod = document.getElementById('paymentMethod').value;
+            if (!selectedMethod) {
+                alert('Please select a payment method.');
+            } else {
+                document.getElementById('confirmationMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
